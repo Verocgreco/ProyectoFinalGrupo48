@@ -1,20 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
+
 package Vistas;
 
-/**
- *
- * @author veron
- */
-public class GestionProductos extends javax.swing.JInternalFrame {
+import accesoADatos.Conexion;
+import java.sql.Connection;
 
-    /**
-     * Creates new form GestionProductos
-     */
+
+public class GestionProductos extends javax.swing.JInternalFrame {
+     private Connection conn = null;
+
+    
     public GestionProductos() {
         initComponents();
+        conn = Conexion.getConexion();
     }
 
     /**
