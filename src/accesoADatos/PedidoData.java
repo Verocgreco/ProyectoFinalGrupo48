@@ -280,5 +280,34 @@ public class PedidoData {
         }
         return pedidos;
     }
+    
+    
+    public ArrayList<Pedido> listaPedidosTotal(){
+        
+        ArrayList<Pedido> pedidoS = new ArrayList<>();
+        
+        try{
+            String sql = "SELECT * FROM pedido";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()){
+                Pedido pedido = new Pedido();
+                
+                pedido.setIdPedido(rs.getInt("id_pedido"));
+                pedido.setMesa(mData.buscarMesa(rs.getInt("id_mesa")));
+                pedido.setMesero(rs.getString("nombre_mesero"));
+                pedido.setFecha(rs.getDate("fecha").toLocalDate());
+                pedido.setHora(rs.getTime("hora").toLocalTime());
+                pedido.setImporte(rs.getDouble("importe"));
+                pedido.setEstado(rs.getBoolean("cobrada"));
+                
+                pedidoS.add(pedido);
+            }
+        } catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error en PedidoData/listaPedidosTotal");
+        }
+        return pedidoS;
+    }
 
 }
