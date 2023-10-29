@@ -223,7 +223,8 @@ public class ProductoData {
         
         ArrayList<Producto> productos= new ArrayList<>();
         
-    String sql="SELECT * FROM producto WHERE estado = 1 AND nombre LIKE ? ORDER BY descripcion";
+    String sql="SELECT * FROM producto WHERE estado = 1 AND nombre LIKE ? "
+            + " AND stock>0 ORDER BY descripcion";
         try {
             
             PreparedStatement ps = conn.prepareStatement(sql);
