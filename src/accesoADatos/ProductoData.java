@@ -72,7 +72,7 @@ public class ProductoData {
             
             int fila = ps.executeUpdate();
             if(fila==1){
-              JOptionPane.showMessageDialog(null, "Producto modificado");
+              //JOptionPane.showMessageDialog(null, "Producto modificado");
             }else{
                  JOptionPane.showMessageDialog(null, "Producto inexistente");
             }
