@@ -42,7 +42,7 @@ public class MesaData {
             ps.close();
             
         } catch (SQLException ex) {
-         JOptionPane.showMessageDialog(null, "Error al Acceder ala BASE MESA");
+         JOptionPane.showMessageDialog(null, "Error al Acceder ala BASE MESA"+ ex.getMessage());
         }
         
     }

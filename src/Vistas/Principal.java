@@ -1,7 +1,11 @@
 
 package Vistas;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JComponent;
+import javax.swing.border.LineBorder;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 
 public class Principal extends javax.swing.JFrame {
@@ -118,6 +122,12 @@ public class Principal extends javax.swing.JFrame {
         Escritorio.repaint();
         GestionPedidos gp = new GestionPedidos();
         gp.setVisible(true);
+        gp.getContentPane().setBackground(new Color(51,51,51));
+        gp.setBorder(new LineBorder((new Color(212, 175, 55)), 8));//color de todos los bordes
+        //color borde superior
+        JComponent superior = ((BasicInternalFrameUI) gp.getUI()).getNorthPane();
+        superior.setOpaque(true);
+        superior.setBackground(new Color(212, 175, 55));
         Escritorio.add(gp);
         Escritorio.moveToFront(gp);
         Dimension desktopSize = Escritorio.getSize();
