@@ -61,6 +61,7 @@ public class GestionMesas extends javax.swing.JInternalFrame {
         jbEliminar = new javax.swing.JButton();
         jrbOcup = new javax.swing.JRadioButton();
         jrbDisp = new javax.swing.JRadioButton();
+        jrbModificar = new javax.swing.JRadioButton();
 
         setClosable(true);
 
@@ -142,8 +143,6 @@ public class GestionMesas extends javax.swing.JInternalFrame {
         jtTablaMesas1.getTableHeader().setResizingAllowed(false);
         jtTablaMesas1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jtTablaMesas1);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\veron\\OneDrive\\Escritorio\\Proyectos etapa 3 AP\\ProyectoFinalGrupo48\\src\\imagenes\\Raton dorado.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -241,20 +240,21 @@ public class GestionMesas extends javax.swing.JInternalFrame {
             }
         });
 
+        DispOcup.add(jrbModificar);
+        jrbModificar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jrbModificar.setForeground(new java.awt.Color(255, 255, 255));
+        jrbModificar.setSelected(true);
+        jrbModificar.setText("Modificar");
+        jrbModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbModificarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(jrbOcup)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jrbDisp)
-                .addGap(140, 140, 140))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(109, 109, 109)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,6 +265,17 @@ public class GestionMesas extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(160, 160, 160))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jrbOcup)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jrbModificar)
+                        .addGap(57, 57, 57)
+                        .addComponent(jrbDisp))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,14 +285,15 @@ public class GestionMesas extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jrbOcup)
-                    .addComponent(jrbDisp))
-                .addGap(26, 26, 26)
+                    .addComponent(jrbDisp)
+                    .addComponent(jrbModificar))
+                .addGap(25, 25, 25)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab2", jPanel2);
@@ -343,6 +355,13 @@ public class GestionMesas extends javax.swing.JInternalFrame {
         jbActualizar.setEnabled(true);
     }//GEN-LAST:event_jrbOcupActionPerformed
 
+    private void jrbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbModificarActionPerformed
+        // TODO add your handling code here:
+        listaMesaTotales();
+        jbEliminar.setEnabled(false);
+        jbActualizar.setEnabled(true);
+    }//GEN-LAST:event_jrbModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup DispOcup;
@@ -360,6 +379,7 @@ public class GestionMesas extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbAgregar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JRadioButton jrbDisp;
+    private javax.swing.JRadioButton jrbModificar;
     private javax.swing.JRadioButton jrbOcup;
     private javax.swing.JSpinner jsCapacidad;
     private javax.swing.JTable jtTablaMesas1;
