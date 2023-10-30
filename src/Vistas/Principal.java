@@ -30,6 +30,10 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButtonProductos.setBackground(new java.awt.Color(204, 204, 204));
+        jButtonProductos.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButtonProductos.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonProductos.setIcon(new javax.swing.ImageIcon("C:\\Users\\veron\\OneDrive\\Escritorio\\Proyectos etapa 3 AP\\ProyectoFinalGrupo48\\src\\imagenes\\hamburguesa.png")); // NOI18N
         jButtonProductos.setText("Productos");
         jButtonProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -37,6 +41,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButtonPedidos.setBackground(new java.awt.Color(204, 204, 204));
+        jButtonPedidos.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButtonPedidos.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonPedidos.setIcon(new javax.swing.ImageIcon("C:\\Users\\veron\\OneDrive\\Escritorio\\Proyectos etapa 3 AP\\ProyectoFinalGrupo48\\src\\imagenes\\pedidos.png")); // NOI18N
         jButtonPedidos.setText("Pedidos");
         jButtonPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,6 +52,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButtonMesas.setBackground(new java.awt.Color(204, 204, 204));
+        jButtonMesas.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButtonMesas.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonMesas.setIcon(new javax.swing.ImageIcon("C:\\Users\\veron\\OneDrive\\Escritorio\\Proyectos etapa 3 AP\\ProyectoFinalGrupo48\\src\\imagenes\\mesas.png")); // NOI18N
         jButtonMesas.setText("Mesas");
         jButtonMesas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +63,10 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jButtonAdmin.setBackground(new java.awt.Color(204, 204, 204));
+        jButtonAdmin.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButtonAdmin.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonAdmin.setIcon(new javax.swing.ImageIcon("C:\\Users\\veron\\OneDrive\\Escritorio\\Proyectos etapa 3 AP\\ProyectoFinalGrupo48\\src\\imagenes\\pc.png")); // NOI18N
         jButtonAdmin.setText("Admin");
         jButtonAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,28 +84,28 @@ public class Principal extends javax.swing.JFrame {
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EscritorioLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonPedidos)
-                    .addComponent(jButtonProductos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
-                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonMesas)
-                    .addComponent(jButtonAdmin))
-                .addGap(36, 36, 36))
+                .addGap(47, 47, 47)
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                    .addComponent(jButtonPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 324, Short.MAX_VALUE)
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonMesas, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+                .addGap(51, 51, 51))
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EscritorioLayout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonProductos)
-                    .addComponent(jButtonMesas))
-                .addGap(45, 45, 45)
+                    .addComponent(jButtonProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonMesas, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
                 .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonPedidos)
-                    .addComponent(jButtonAdmin))
-                .addContainerGap(145, Short.MAX_VALUE))
+                    .addComponent(jButtonPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(271, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -146,6 +162,12 @@ public class Principal extends javax.swing.JFrame {
         Escritorio.repaint();
         GestionMesas gm = new GestionMesas();
         gm.setVisible(true);
+        gm.getContentPane().setBackground(new Color(51,51,51));
+        gm.setBorder(new LineBorder((new Color(212, 175, 55)), 8));//color de todos los bordes
+        //color borde superior
+        JComponent superior = ((BasicInternalFrameUI) gm.getUI()).getNorthPane();
+        superior.setOpaque(true);
+        superior.setBackground(new Color(212, 175, 55));
         Escritorio.add(gm);
         Escritorio.moveToFront(gm);
         Dimension desktopSize = Escritorio.getSize();
@@ -158,6 +180,12 @@ public class Principal extends javax.swing.JFrame {
        Escritorio.repaint();
         Administracion ga = new Administracion();
         ga.setVisible(true);
+        ga.getContentPane().setBackground(new Color(51,51,51));
+        ga.setBorder(new LineBorder((new Color(212, 175, 55)), 8));//color de todos los bordes
+        //color borde superior
+        JComponent superior = ((BasicInternalFrameUI) ga.getUI()).getNorthPane();
+        superior.setOpaque(true);
+        superior.setBackground(new Color(212, 175, 55));
         Escritorio.add(ga);
         Escritorio.moveToFront(ga);
         Dimension desktopSize = Escritorio.getSize();

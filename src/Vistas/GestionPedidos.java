@@ -234,6 +234,7 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("SELECCIONE UN PEDIDO:");
 
+        jTablePedidos.setBackground(new java.awt.Color(204, 204, 204));
         jTablePedidos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jTablePedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -246,6 +247,9 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTablePedidos.setGridColor(new java.awt.Color(0, 0, 0));
+        jTablePedidos.setSelectionBackground(new java.awt.Color(102, 102, 102));
+        jTablePedidos.setShowGrid(true);
         jTablePedidos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTablePedidosMouseClicked(evt);
@@ -301,6 +305,7 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
             }
         });
 
+        jTable2.setBackground(new java.awt.Color(204, 204, 204));
         jTable2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -313,6 +318,9 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable2.setGridColor(new java.awt.Color(0, 0, 0));
+        jTable2.setSelectionBackground(new java.awt.Color(102, 102, 102));
+        jTable2.setShowGrid(true);
         jScrollPane3.setViewportView(jTable2);
 
         jBQuitar.setBackground(new java.awt.Color(204, 204, 204));
@@ -429,7 +437,9 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
         jPanel5.setForeground(new java.awt.Color(0, 0, 0));
         jPanel5.setPreferredSize(new java.awt.Dimension(560, 610));
 
+        jBImprimir.setBackground(new java.awt.Color(102, 102, 102));
         jBImprimir.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jBImprimir.setForeground(new java.awt.Color(255, 255, 255));
         jBImprimir.setText("Imprimir ticket");
         jBImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -445,14 +455,15 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
         jLMesero.setForeground(new java.awt.Color(0, 0, 0));
         jLMesero.setText("mesero");
 
-        jLabel18.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("TOTAL: ");
 
-        jLabelTotal.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabelTotal.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         jLabelTotal.setForeground(new java.awt.Color(0, 0, 0));
         jLabelTotal.setText("total");
 
+        jTablETicket.setBackground(new java.awt.Color(255, 255, 255));
         jTablETicket.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -464,6 +475,7 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTablETicket.setEnabled(false);
         jScrollPane4.setViewportView(jTablETicket);
 
         jLabel14.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N

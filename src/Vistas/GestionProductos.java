@@ -192,6 +192,7 @@ public class GestionProductos extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
+        jtTablaProductos.setBackground(new java.awt.Color(204, 204, 204));
         jtTablaProductos.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jtTablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -204,6 +205,9 @@ public class GestionProductos extends javax.swing.JInternalFrame {
                 "ID", "TIPO", "DESCRIPCION", "PRECIO", "STOCK", "ESTADO"
             }
         ));
+        jtTablaProductos.setGridColor(new java.awt.Color(0, 0, 0));
+        jtTablaProductos.setSelectionBackground(new java.awt.Color(102, 102, 102));
+        jtTablaProductos.setShowGrid(true);
         jtTablaProductos.getTableHeader().setResizingAllowed(false);
         jtTablaProductos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jtTablaProductos);
