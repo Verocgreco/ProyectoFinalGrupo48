@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -174,13 +176,13 @@ public class PedidoData {
     }
 
     //lista de pedidos que hayan sido atendidos por un mesero en particular en una fecha
-    public ArrayList<Pedido> listarPedidosPorMesero(String mesero, Date fecha) {
+    public ArrayList<Pedido> listarPedidosPorMesero(String mesero, LocalDate fecha) {
         ArrayList<Pedido> pedidos = new ArrayList<>();
         String sql = "SELECT * FROM pedido WHERE nombre_mesero=? AND fecha=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, mesero);
-            ps.setDate(2, fecha);
+            ps.setDate(2, Date.valueOf(fecha));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Pedido pedido = new Pedido();
@@ -201,12 +203,12 @@ public class PedidoData {
     }
 
     //lista de pedidos en una fecha en particular
-    public ArrayList<Pedido> listarPedidosPorFecha(Date fecha) {
+    public ArrayList<Pedido> listarPedidosPorFecha(LocalDate fecha) {
         ArrayList<Pedido> pedidos = new ArrayList<>();
         String sql = "SELECT * FROM pedido WHERE fecha=?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setDate(1, fecha);
+            ps.setDate(1, Date.valueOf(fecha));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Pedido pedido = new Pedido();
@@ -227,14 +229,14 @@ public class PedidoData {
     }
 
     //lista de pedidos en una fecha, en un rango horario
-    public ArrayList<Pedido> listarPedidosPorHora(Date fecha, Time desde, Time hasta) {
+    public ArrayList<Pedido> listarPedidosPorHora(LocalDate fecha, LocalTime desde, LocalTime hasta) {
         ArrayList<Pedido> pedidos = new ArrayList<>();
         String sql = "SELECT * FROM pedido WHERE fecha=? AND hora BETWEEN ? AND ?";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setDate(1, fecha);
-            ps.setTime(2, desde);
-            ps.setTime(3, hasta);
+            ps.setDate(1, Date.valueOf(fecha));
+            ps.setTime(2, Time.valueOf(desde));
+            ps.setTime(3, Time.valueOf(hasta));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Pedido pedido = new Pedido();
@@ -255,13 +257,13 @@ public class PedidoData {
     }
 
     //lista de pedidos en un período de fechas elegido por usuario
-    public ArrayList<Pedido> listarPedidosPorPeriodo(Date fechaInicio, Date fechaFin) {
+    public ArrayList<Pedido> listarPedidosPorPeriodo(LocalDate fechaInicio, LocalDate fechaFin) {
         ArrayList<Pedido> pedidos = new ArrayList<>();
-        String sql = "SELECT * FROM pedido WHERE fecha BETWEEN ? AND ?";
+        String sql = "SELECT * FROM pedido WHERE fecha BETWEEN ? AND ? ORDER BY fecha";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setDate(1, fechaInicio);
-            ps.setDate(2, fechaFin);
+            ps.setDate(1, Date.valueOf(fechaInicio));
+            ps.setDate(2, Date.valueOf(fechaFin));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Pedido pedido = new Pedido();
@@ -282,12 +284,13 @@ public class PedidoData {
     }
     
     
+    //lista completa de todos los pedidos hechos hasta la fecha actual
     public ArrayList<Pedido> listaPedidosTotal(){
         
         ArrayList<Pedido> pedidoS = new ArrayList<>();
         
         try{
-            String sql = "SELECT * FROM pedido";
+            String sql = "SELECT * FROM pedido ORDER BY fecha";
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             
@@ -309,5 +312,52 @@ public class PedidoData {
         }
         return pedidoS;
     }
+    
+    //Metodo para obtener todos los nombres de los meseros en la base de datos
+    public ArrayList<String> nombreMeseros(){
+        ArrayList<String> nombreS = new ArrayList<>();
+        try{
+            
+            String sql = "SELECT nombre_mesero, COUNT(nombre_mesero) FROM pedido GROUP BY nombre_mesero";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()){
+                String nombre = rs.getString("nombre_mesero");
+                nombreS.add(nombre);
+            }
+            
+        } catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error en PedidoData/nombreMeseros");
+        }
+        return nombreS;
+    }
+    
+    //Todos los pedidos que a hecho el mesero
+    public ArrayList<Pedido> totalPedidosMesero(String mesero) {
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+        String sql = "SELECT * FROM pedido WHERE nombre_mesero=?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, mesero);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Pedido pedido = new Pedido();
+                pedido.setIdPedido(rs.getInt("id_pedido"));
+                pedido.setMesa(mData.buscarMesa(rs.getInt("id_mesa")));
+                pedido.setMesero(rs.getString("nombre_mesero"));
+                pedido.setFecha(rs.getDate("fecha").toLocalDate());
+                pedido.setHora(rs.getTime("hora").toLocalTime());
+                pedido.setImporte(rs.getDouble("importe"));
+                pedido.setEstado(rs.getBoolean("cobrada"));
+                pedidos.add(pedido);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error de acceso a tabla " + ex.getMessage());
+        }
+        return pedidos;
+    }
+    
 
 }
