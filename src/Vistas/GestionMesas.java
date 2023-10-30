@@ -32,6 +32,8 @@ public class GestionMesas extends javax.swing.JInternalFrame {
         Cabecera2();
         listaMesaDis();
         listaMesaTotales();
+        Block();
+        
         conn = Conexion.getConexion();
     }
 
@@ -291,13 +293,14 @@ public class GestionMesas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         listaMesaDisponibles();
         jbEliminar.setEnabled(true);
-        
+        jbActualizar.setEnabled(true);
     }//GEN-LAST:event_jrbDispActionPerformed
 
     private void jrbOcupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbOcupActionPerformed
         // TODO add your handling code here:
         listaMesaOcupadas();
         jbEliminar.setEnabled(false);
+        jbActualizar.setEnabled(true);
     }//GEN-LAST:event_jrbOcupActionPerformed
 
 
@@ -375,4 +378,7 @@ for(Mesa mesa : MD.listarMesasLibres()){
                                mesa.getCapacidad()});
         }
 }
+public void Block(){
+jbEliminar.setEnabled(false);
+jbActualizar.setEnabled(false);}
 }
