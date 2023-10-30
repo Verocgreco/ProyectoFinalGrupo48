@@ -720,7 +720,7 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
         modeloJLi.removeAllElements();
         jListProductos.setModel(modeloJLi);
         String nombre = "Bebidas";
-        for (Producto bebida : proData.listaProducto4(nombre)) {
+        for (Producto bebida : proData.listaProducto5(nombre)) {
             modeloJLi.addElement(bebida);
         }
     }//GEN-LAST:event_jButtonBebidasActionPerformed
@@ -729,7 +729,7 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
         modeloJLi.removeAllElements();
         jListProductos.setModel(modeloJLi);
         String nombre = "Comidas";
-        for (Producto bebida : proData.listaProducto4(nombre)) {
+        for (Producto bebida : proData.listaProducto5(nombre)) {
             modeloJLi.addElement(bebida);
         }
     }//GEN-LAST:event_jButtonComidasActionPerformed
@@ -738,7 +738,7 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
         modeloJLi.removeAllElements();
         jListProductos.setModel(modeloJLi);
         String nombre = "Postres";
-        for (Producto bebida : proData.listaProducto4(nombre)) {
+        for (Producto bebida : proData.listaProducto5(nombre)) {
             modeloJLi.addElement(bebida);
         }
     }//GEN-LAST:event_jButtonPostresActionPerformed

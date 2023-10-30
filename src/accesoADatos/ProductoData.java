@@ -224,6 +224,41 @@ public class ProductoData {
         ArrayList<Producto> productos= new ArrayList<>();
         
     String sql="SELECT * FROM producto WHERE estado = 1 AND nombre LIKE ? "
+            + " ORDER BY descripcion";
+        try {
+            
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,nombre);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+            Producto prod = new Producto();
+            
+            prod.setIdProducto(rs.getInt("id_producto"));
+            prod.setNombre(nombre);
+            prod.setDescripcion(rs.getString("descripcion"));
+            prod.setPrecio(rs.getDouble("precio"));
+            prod.setStock(rs.getInt("stock"));
+            prod.setEstado(rs.getBoolean("estado"));
+            productos.add(prod);
+            
+            }
+            
+            
+            
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error en Acceder Tabla PRODUCTO");
+        }
+        
+        return productos;
+}
+       
+       public ArrayList<Producto> listaProducto5(String nombre){
+        
+        
+        ArrayList<Producto> productos= new ArrayList<>();
+        
+    String sql="SELECT * FROM producto WHERE estado = 1 AND nombre LIKE ? "
             + " AND stock>0 ORDER BY descripcion";
         try {
             
