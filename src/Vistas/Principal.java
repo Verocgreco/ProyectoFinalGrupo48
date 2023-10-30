@@ -110,6 +110,12 @@ public class Principal extends javax.swing.JFrame {
         Escritorio.repaint();
         GestionProductos gp = new GestionProductos();
         gp.setVisible(true);
+        gp.getContentPane().setBackground(new Color(51,51,51));
+        gp.setBorder(new LineBorder((new Color(212, 175, 55)), 8));//color de todos los bordes
+        //color borde superior
+        JComponent superior = ((BasicInternalFrameUI) gp.getUI()).getNorthPane();
+        superior.setOpaque(true);
+        superior.setBackground(new Color(212, 175, 55));
         Escritorio.add(gp);
         Escritorio.moveToFront(gp);
         Dimension desktopSize = Escritorio.getSize();
