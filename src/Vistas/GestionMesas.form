@@ -252,11 +252,6 @@
               </SubComponents>
             </Container>
             <Component class="javax.swing.JLabel" name="jLabel4">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\veron\OneDrive\Escritorio\Proyectos etapa 3 AP\ProyectoFinalGrupo48\src\imagenes\Raton dorado.png"/>
-                </Property>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>

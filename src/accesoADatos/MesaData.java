@@ -215,6 +215,32 @@ public class MesaData {
         
         return mesas;
 }
+        public ArrayList<Mesa> mesasSinPedidos(){
+        ArrayList<Mesa> mesas= new ArrayList<>();
+        
+        String sql ="SELECT m.id_mesa, m.estado_mesa, m.Capacidad "
+                    + "FROM Mesa m WHERE m.id_mesa"
+                    + " NOT IN (SELECT DISTINCT p.id_mesa FROM Pedido p)";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+            Mesa mes = new Mesa();
+            mes.setIdMesa(rs.getInt("id_mesa"));
+            mes.setCapacidad(rs.getInt("capacidad"));
+            mes.setEstado(rs.getBoolean("estado_mesa"));
+            mesas.add(mes);
+            
+            }
+                      ps.close();
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, "Error Al Acceder ala Tabla MESA");
+        }
+        
+        
+        return mesas;
+}
 
 }
 

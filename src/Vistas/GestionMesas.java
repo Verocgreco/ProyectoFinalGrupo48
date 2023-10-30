@@ -413,7 +413,7 @@ for(Mesa mesa : MD.listarMesasOcupadas()){
 
 public void listaMesaDisponibles(){
 modelo2.setRowCount(0);
-for(Mesa mesa : MD.listarMesasLibres()){
+for(Mesa mesa : MD.mesasSinPedidos()){
     modelo2.addRow(new Object[]{mesa.getIdMesa(),
                                mesa.isEstado(),
                                mesa.getCapacidad()});
