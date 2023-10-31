@@ -339,16 +339,16 @@ public class GestionProductos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         try {
 
-            ArrayList<Producto> estadoProd = new ArrayList<>();
+            ArrayList<Producto> modificaciones = new ArrayList<>();
             int[] filasSeleccionadas = jtTablaProductos.getSelectedRows();
             for (int fila : filasSeleccionadas) {
                 Producto producto3 = PD.buscarPorID(Integer.parseInt(modelo.getValueAt(fila, 0).toString()));
                 producto3.setPrecio(Double.parseDouble(modelo.getValueAt(fila, 3).toString()));
                 producto3.setStock(Integer.parseInt(modelo.getValueAt(fila, 4).toString()));
-                estadoProd.add(producto3);
-                if (producto3.getPrecio() > 0 && producto3.getStock() >= 0) {
-                    PD.modificarProducto(producto3);
-                } else if (producto3.getPrecio() > 0 || producto3.getStock() <= 0) {
+                modificaciones.add(producto3);
+                if (producto3.getPrecio() > 0 &&  producto3.getStock() >= 0) {
+                    PD.modificarProd(modificaciones);
+                } else {
 
                     JOptionPane.showMessageDialog(this, "Sólo ingrese números mayores a 0 ");
                     ContenidoTabla();

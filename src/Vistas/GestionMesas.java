@@ -6,6 +6,7 @@ import accesoADatos.MesaData;
 import entidades.Mesa;
 import java.sql.Connection;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -342,20 +343,24 @@ public class GestionMesas extends javax.swing.JInternalFrame {
 //        mes.setCapacidad(Integer.parseInt(modelo2.getValueAt(jtTablaMesas2.getSelectedRow(), 2).toString()));
 //        MD.cambiarCapacidad(mes);
 //        listaMesaTotales();
-
+    try{
             ArrayList<Mesa> ActualizarMesas= new ArrayList<>();
             int[] filasSeleccionadas = jtTablaMesas2.getSelectedRows();
             for (int fila : filasSeleccionadas){
             
                 Mesa mesa = MD.buscarMesa(Integer.parseInt(modelo2.getValueAt(fila, 0).toString()));
                     mesa.setCapacidad(Integer.parseInt(modelo2.getValueAt(fila, 2).toString()));
-                    
+                    if(mesa.getCapacidad()>0){
                     ActualizarMesas.add(mesa);
-            
+                    }else{
+                           JOptionPane.showMessageDialog(this,"Mayor a 0"); }
             }
             
             MD.CambiarCap(ActualizarMesas);
-
+    }catch (NumberFormatException nf) {
+            JOptionPane.showMessageDialog(this, "Llene Los campos numéricos correctamente");
+            listaMesaTotales();
+    }
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jrbDispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbDispActionPerformed
