@@ -46,7 +46,9 @@ public class Principal extends javax.swing.JFrame {
         jButtonProductos.setBackground(new java.awt.Color(204, 204, 204));
         jButtonProductos.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButtonProductos.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonProductos.setIcon(new javax.swing.ImageIcon("C:\\Users\\veron\\OneDrive\\Escritorio\\Proyectos etapa 3 AP\\ProyectoFinalGrupo48\\src\\imagenes\\hamburguesa.png")); // NOI18N
         jButtonProductos.setText("Productos");
+        jButtonProductos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonProductosActionPerformed(evt);
@@ -56,7 +58,9 @@ public class Principal extends javax.swing.JFrame {
         jButtonPedidos.setBackground(new java.awt.Color(204, 204, 204));
         jButtonPedidos.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButtonPedidos.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonPedidos.setIcon(new javax.swing.ImageIcon("C:\\Users\\veron\\OneDrive\\Escritorio\\Proyectos etapa 3 AP\\ProyectoFinalGrupo48\\src\\imagenes\\pedidos.png")); // NOI18N
         jButtonPedidos.setText("Pedidos");
+        jButtonPedidos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonPedidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonPedidosActionPerformed(evt);
@@ -66,7 +70,9 @@ public class Principal extends javax.swing.JFrame {
         jButtonMesas.setBackground(new java.awt.Color(204, 204, 204));
         jButtonMesas.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButtonMesas.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonMesas.setIcon(new javax.swing.ImageIcon("C:\\Users\\veron\\OneDrive\\Escritorio\\Proyectos etapa 3 AP\\ProyectoFinalGrupo48\\src\\imagenes\\mesas.png")); // NOI18N
         jButtonMesas.setText("Mesas");
+        jButtonMesas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonMesas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMesasActionPerformed(evt);
@@ -76,7 +82,9 @@ public class Principal extends javax.swing.JFrame {
         jButtonAdmin.setBackground(new java.awt.Color(204, 204, 204));
         jButtonAdmin.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jButtonAdmin.setForeground(new java.awt.Color(0, 0, 0));
+        jButtonAdmin.setIcon(new javax.swing.ImageIcon("C:\\Users\\veron\\OneDrive\\Escritorio\\Proyectos etapa 3 AP\\ProyectoFinalGrupo48\\src\\imagenes\\pc.png")); // NOI18N
         jButtonAdmin.setText("Admin");
+        jButtonAdmin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAdminActionPerformed(evt);
