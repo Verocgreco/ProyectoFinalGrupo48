@@ -359,5 +359,34 @@ public class PedidoData {
         return pedidos;
     }
     
-
+    public double gananciaMesAnterior(){
+        
+        double monto = 0;
+        int mes = LocalDate.now().getMonthValue();
+        String condicion;
+        
+        if (mes == 1){ // si el mes es el primero del año
+            condicion = (LocalDate.now().getYear() - 1) + "-12-%";
+        } else if (mes == 11 || mes == 12){ // si el mes es noviembre/diciembre
+            condicion = LocalDate.now().getYear() + "-" + (mes - 1) + "-%";
+        } else { // si son meses entre 2 - 10
+            condicion = LocalDate.now().getYear() + "-0" + (mes - 1) + "-%";
+        }
+        
+        try{
+            
+            String sql = "SELECT * FROM pedido WHERE fecha LIKE '?'";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, condicion);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()){
+                monto = monto + rs.getInt("importe");
+            }
+            
+        } catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error en PedidoData/GananciaMesAnterior");
+        }
+        return monto;
+    }
 }
