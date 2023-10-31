@@ -176,7 +176,7 @@ public class GestionMesas extends javax.swing.JInternalFrame {
                 .addContainerGap(69, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab1", jPanel1);
+        jTabbedPane1.addTab("Agregar", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -195,6 +195,8 @@ public class GestionMesas extends javax.swing.JInternalFrame {
         jtTablaMesas2.setGridColor(new java.awt.Color(0, 0, 0));
         jtTablaMesas2.setSelectionBackground(new java.awt.Color(102, 102, 102));
         jtTablaMesas2.setShowGrid(true);
+        jtTablaMesas2.getTableHeader().setResizingAllowed(false);
+        jtTablaMesas2.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jtTablaMesas2);
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -297,7 +299,7 @@ public class GestionMesas extends javax.swing.JInternalFrame {
                 .addContainerGap(115, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        jTabbedPane1.addTab("Modificar y Eliminar", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

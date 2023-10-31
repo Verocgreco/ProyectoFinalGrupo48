@@ -34,6 +34,10 @@
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="Escritorio">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane(){&#xa;&#xa;    public void paintComponent(Graphics g){&#xa;&#xa;        g.drawImage(miImagen, 0, 0, getWidth(),getHeight() , this);&#xa;&#xa;    }&#xa;&#xa;}"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="ImageIcon icono =  new ImageIcon(getClass().getResource(&quot;/imagenes/Imagen.png&quot;) );&#xa;Image miImagen = icono.getImage();"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -83,9 +87,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\veron\OneDrive\Escritorio\Proyectos etapa 3 AP\ProyectoFinalGrupo48\src\imagenes\hamburguesa.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Productos"/>
           </Properties>
           <Events>
@@ -102,9 +103,6 @@
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\veron\OneDrive\Escritorio\Proyectos etapa 3 AP\ProyectoFinalGrupo48\src\imagenes\pedidos.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pedidos"/>
           </Properties>
@@ -123,9 +121,6 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\veron\OneDrive\Escritorio\Proyectos etapa 3 AP\ProyectoFinalGrupo48\src\imagenes\mesas.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Mesas"/>
           </Properties>
           <Events>
@@ -142,9 +137,6 @@
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\veron\OneDrive\Escritorio\Proyectos etapa 3 AP\ProyectoFinalGrupo48\src\imagenes\pc.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Admin"/>
           </Properties>

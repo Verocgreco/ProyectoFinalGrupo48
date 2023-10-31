@@ -297,6 +297,7 @@ public class GestionProductos extends javax.swing.JInternalFrame {
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         // TODO add your handling code here:
         try {
+            if(Integer.parseInt(jtPrecio.getText())>=0 && Integer.parseInt(jtStock.getText())>=0){
             Producto producto1 = new Producto();
 
             producto1.setNombre(jcbTipos.getSelectedItem().toString());
@@ -306,7 +307,9 @@ public class GestionProductos extends javax.swing.JInternalFrame {
             producto1.setEstado(true);
             PD.productoNuevo(producto1);
             LimpiarCampos();
-
+            }else{
+                JOptionPane.showMessageDialog(this, "Mayor o igual a 0");}
+            
         } catch (NullPointerException np) {
             JOptionPane.showMessageDialog(this, "Llene Los campos Correctos");
         } catch (NumberFormatException nf) {
