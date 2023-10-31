@@ -745,10 +745,14 @@ private DefaultTableModel modeloG = new DefaultTableModel(){
                 
             } else {
                 
+                monto = 0;
+                
                 LocalDate f = jdcFechaG.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
                 modeloG.setRowCount(0);
                 
                 for(Pedido pedido:pedD.listarPedidosPorFecha(f)){
+                    
+                    monto = monto + pedido.getImporte();
                     
                     modeloG.addRow(new Object[]{
                         pedido.getImporte(),
@@ -757,6 +761,9 @@ private DefaultTableModel modeloG = new DefaultTableModel(){
                         pedido.getHora()
                     });
                 }
+                
+                jlGananciaDiaria.setText("Ingresos totales del dia seleccionado = " + monto);
+                
             }
         }
     }//GEN-LAST:event_jdcFechaGPropertyChange
