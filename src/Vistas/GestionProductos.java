@@ -297,19 +297,20 @@ public class GestionProductos extends javax.swing.JInternalFrame {
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         // TODO add your handling code here:
         try {
-            if(Integer.parseInt(jtPrecio.getText())>=0 && Integer.parseInt(jtStock.getText())>=0){
-            Producto producto1 = new Producto();
+            if (Integer.parseInt(jtPrecio.getText()) >= 0 && Integer.parseInt(jtStock.getText()) >= 0) {
+                Producto producto1 = new Producto();
 
-            producto1.setNombre(jcbTipos.getSelectedItem().toString());
-            producto1.setDescripcion(jtDescripcion.getText());
-            producto1.setPrecio(Double.parseDouble(jtPrecio.getText()));
-            producto1.setStock(Integer.parseInt(jtStock.getText()));
-            producto1.setEstado(true);
-            PD.productoNuevo(producto1);
-            LimpiarCampos();
-            }else{
-                JOptionPane.showMessageDialog(this, "Mayor o igual a 0");}
-            
+                producto1.setNombre(jcbTipos.getSelectedItem().toString());
+                producto1.setDescripcion(jtDescripcion.getText());
+                producto1.setPrecio(Double.parseDouble(jtPrecio.getText()));
+                producto1.setStock(Integer.parseInt(jtStock.getText()));
+                producto1.setEstado(true);
+                PD.productoNuevo(producto1);
+                LimpiarCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Mayor o igual a 0");
+            }
+
         } catch (NullPointerException np) {
             JOptionPane.showMessageDialog(this, "Llene Los campos Correctos");
         } catch (NumberFormatException nf) {
@@ -339,7 +340,7 @@ public class GestionProductos extends javax.swing.JInternalFrame {
         try {
 
             ArrayList<Producto> estadoProd = new ArrayList<>();
-                int[] filasSeleccionadas = jtTablaProductos.getSelectedRows();
+            int[] filasSeleccionadas = jtTablaProductos.getSelectedRows();
             for (int fila : filasSeleccionadas) {
                 Producto producto3 = PD.buscarPorID(Integer.parseInt(modelo.getValueAt(fila, 0).toString()));
                 producto3.setPrecio(Double.parseDouble(modelo.getValueAt(fila, 3).toString()));
@@ -349,16 +350,16 @@ public class GestionProductos extends javax.swing.JInternalFrame {
                     PD.modificarProducto(producto3);
                 } else if (producto3.getPrecio() > 0 || producto3.getStock() <= 0) {
 
-                    JOptionPane.showMessageDialog(this, "Mayores a 0 ");
+                    JOptionPane.showMessageDialog(this, "Sólo ingrese números mayores a 0 ");
                     ContenidoTabla();
                 }
             }
+        } catch (NumberFormatException nf) {
+            JOptionPane.showMessageDialog(this, "Llene Los campos numéricos correctamente");
+            ContenidoTabla();
 
         } catch (ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(this, "Seleccione en la Tabla");
-        } catch (NumberFormatException nf) {
-            JOptionPane.showMessageDialog(this, "Llene Los campos Correctos");
-            ContenidoTabla();
         }
 
     }//GEN-LAST:event_jbModificarActionPerformed
