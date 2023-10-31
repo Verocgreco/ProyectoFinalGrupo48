@@ -944,20 +944,11 @@ private DefaultTableModel modeloG = new DefaultTableModel(){
     
     public void entreHoras(){
         
-        String desde;
-        String hasta;
-        
         if (jdcXD.getDate() != null){
         
             LocalDate f = jdcXD.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            
-            if ((int)jsHD.getValue() < 10){
-                desde = "0" + jsHD.getValue() + ":00";
-            }else{
-                desde = jsHD.getValue() + ":00";
-            }
-            
-            hasta = jsHH.getValue() + ":00";
+            String desde = jsHD.getValue() + ":00";
+            String hasta = jsHH.getValue() + ":00";
             modelo.setRowCount(0);
         
             for(Pedido pedido : pedD.listarPedidosPorHora(f, LocalTime.parse(desde), LocalTime.parse(hasta))){
