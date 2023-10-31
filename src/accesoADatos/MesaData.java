@@ -242,6 +242,29 @@ public class MesaData {
         return mesas;
 }
 
+                public void CambiarCap(ArrayList<Mesa> mesas) {
+    String sql = "UPDATE mesa SET capacidad=? WHERE id_mesa = ?";
+    
+    try {
+        PreparedStatement ps = conn.prepareStatement(sql);
+        for (Mesa mesa : mesas) {
+            ps.setInt(1, mesa.getCapacidad());
+            ps.setInt(2, mesa.getIdMesa());
+            
+            int fila = ps.executeUpdate();
+            if (fila == 1) {
+                System.out.println("Capacidad de la Mesa " + mesa.getIdMesa() + " ahora es de " + mesa.getCapacidad());
+            } else {
+                System.out.println("No se pudo actualizar la capacidad de la Mesa " + mesa.getIdMesa());
+            }
+        }
+        
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al Acceder ala TABLA MESA");
+    }
+}
+                
 }
 
  

@@ -5,6 +5,7 @@ import accesoADatos.Conexion;
 import accesoADatos.MesaData;
 import entidades.Mesa;
 import java.sql.Connection;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -335,10 +336,24 @@ public class GestionMesas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         
         
-        Mesa mes = MD.buscarMesa(Integer.parseInt(modelo2.getValueAt(jtTablaMesas2.getSelectedRow(), 0).toString()));
-        mes.setCapacidad(Integer.parseInt(modelo2.getValueAt(jtTablaMesas2.getSelectedRow(), 2).toString()));
-        MD.cambiarCapacidad(mes);
-        listaMesaTotales();
+//        Mesa mes = MD.buscarMesa(Integer.parseInt(modelo2.getValueAt(jtTablaMesas2.getSelectedRow(), 0).toString()));
+//        mes.setCapacidad(Integer.parseInt(modelo2.getValueAt(jtTablaMesas2.getSelectedRow(), 2).toString()));
+//        MD.cambiarCapacidad(mes);
+//        listaMesaTotales();
+
+            ArrayList<Mesa> ActualizarMesas= new ArrayList<>();
+            int[] filasSeleccionadas = jtTablaMesas2.getSelectedRows();
+            for (int fila : filasSeleccionadas){
+            
+                Mesa mesa = MD.buscarMesa(Integer.parseInt(modelo2.getValueAt(fila, 0).toString()));
+                    mesa.setCapacidad(Integer.parseInt(modelo2.getValueAt(fila, 2).toString()));
+                    
+                    ActualizarMesas.add(mesa);
+            
+            }
+            
+            MD.CambiarCap(ActualizarMesas);
+
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jrbDispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbDispActionPerformed

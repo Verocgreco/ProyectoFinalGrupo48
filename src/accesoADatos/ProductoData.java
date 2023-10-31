@@ -322,5 +322,30 @@ public class ProductoData {
         return prod;
     }
         
+           public void modificarProd(ArrayList<Producto> productos) {
+    String sql = "UPDATE producto SET precio =? , stock =? WHERE id_producto = ?";
+    
+    try {
+        PreparedStatement ps = conn.prepareStatement(sql);
+        for (Producto prod : productos) {
+             
+
+            ps.setDouble(1, prod.getPrecio());
+            ps.setInt(2, prod.getStock());
+            ps.setInt(3, prod.getIdProducto());
+            int fila = ps.executeUpdate();
+            if (fila == 1) {
+                System.out.println("El Stock  del PRODUCTO " + prod.getStock() + "y  Precio" + prod.getPrecio());
+                       
+            } else {
+                System.out.println("No se pudo actualizar el estado del PRODUCTO " + prod.isEstado());
+            }
+        }
+        
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al Acceder ala TABLA PRODUCTO");
+    }
+}
 
 }

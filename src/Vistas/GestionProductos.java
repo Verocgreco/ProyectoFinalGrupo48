@@ -1,32 +1,31 @@
-
 package Vistas;
 
 import accesoADatos.Conexion;
 import accesoADatos.ProductoData;
 import entidades.Producto;
 import java.sql.Connection;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class GestionProductos extends javax.swing.JInternalFrame {
-     private Connection conn = null;
-     
-     private DefaultTableModel modelo =new DefaultTableModel(){
-     
-             public boolean isCellEditable(int rowIndex, int colIndex) {
-                 if(colIndex >= 3 & colIndex <= 4){
-                        return true;
-                        
-                 }else{
-                        return false;}
-        
-     
-     
-             }
-     };
-        ProductoData PD = new ProductoData();
-    
+
+    private Connection conn = null;
+
+    private DefaultTableModel modelo = new DefaultTableModel() {
+
+        public boolean isCellEditable(int rowIndex, int colIndex) {
+            if (colIndex >= 3 & colIndex <= 4) {
+                return true;
+
+            } else {
+                return false;
+            }
+
+        }
+    };
+    ProductoData PD = new ProductoData();
+
     public GestionProductos() {
         initComponents();
         Cabecera1();
@@ -297,24 +296,24 @@ public class GestionProductos extends javax.swing.JInternalFrame {
 
     private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
         // TODO add your handling code here:
-        try{
-        Producto producto1 = new Producto();
-        
+        try {
+            Producto producto1 = new Producto();
+
             producto1.setNombre(jcbTipos.getSelectedItem().toString());
             producto1.setDescripcion(jtDescripcion.getText());
             producto1.setPrecio(Double.parseDouble(jtPrecio.getText()));
             producto1.setStock(Integer.parseInt(jtStock.getText()));
             producto1.setEstado(true);
-                PD.productoNuevo(producto1);
-                    LimpiarCampos();
-                    
-        }catch(NullPointerException np){
+            PD.productoNuevo(producto1);
+            LimpiarCampos();
+
+        } catch (NullPointerException np) {
             JOptionPane.showMessageDialog(this, "Llene Los campos Correctos");
-        }catch(NumberFormatException nf){
+        } catch (NumberFormatException nf) {
             JOptionPane.showMessageDialog(this, "Llene Los campos Correctos");
         }
-        
-        
+
+
     }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void jcbTipos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbTipos2ActionPerformed
@@ -324,42 +323,41 @@ public class GestionProductos extends javax.swing.JInternalFrame {
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
-        try{
-        PD.borrarProducto(Integer.parseInt(modelo.getValueAt(jtTablaProductos.getSelectedRow(), 0).toString()));
-        ContenidoTabla();
-        }catch (ArrayIndexOutOfBoundsException e) {
+        try {
+            PD.borrarProducto(Integer.parseInt(modelo.getValueAt(jtTablaProductos.getSelectedRow(), 0).toString()));
+            ContenidoTabla();
+        } catch (ArrayIndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(this, "Seleccione en la Tabla");
         }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
         // TODO add your handling code here:
-        try{
-            
-            
-        if(jtTablaProductos.getSelectedColumn()== 3 || jtTablaProductos.getSelectedColumn()== 4 ){
-           Producto producto3 = PD.buscarPorID(Integer.parseInt(modelo.getValueAt
-                                (jtTablaProductos.getSelectedRow(),0).toString()));
-           
-           
-               producto3.setPrecio(Double.parseDouble(modelo.getValueAt(jtTablaProductos.getSelectedRow(), 3).toString()));
-               producto3.setStock(Integer.parseInt(modelo.getValueAt(jtTablaProductos.getSelectedRow(), 4).toString()));
-               
-                if(producto3.getPrecio() > 0 && producto3.getStock() >= 0){
+        try {
+
+            ArrayList<Producto> estadoProd = new ArrayList<>();
+                int[] filasSeleccionadas = jtTablaProductos.getSelectedRows();
+            for (int fila : filasSeleccionadas) {
+                Producto producto3 = PD.buscarPorID(Integer.parseInt(modelo.getValueAt(fila, 0).toString()));
+                producto3.setPrecio(Double.parseDouble(modelo.getValueAt(fila, 3).toString()));
+                producto3.setStock(Integer.parseInt(modelo.getValueAt(fila, 4).toString()));
+                estadoProd.add(producto3);
+                if (producto3.getPrecio() > 0 && producto3.getStock() >= 0) {
                     PD.modificarProducto(producto3);
-                }else if(producto3.getPrecio()< 0 || producto3.getStock()<=0) {
+                } else if (producto3.getPrecio() > 0 || producto3.getStock() <= 0) {
+
                     JOptionPane.showMessageDialog(this, "Mayores a 0 ");
-                        ContenidoTabla();
-        }
-        
-        }
-        }catch (ArrayIndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(this, "Seleccione en la Tabla");
-        }catch(NumberFormatException nf){
-            JOptionPane.showMessageDialog(this, "Llene Los campos Correctos");
                     ContenidoTabla();
+                }
+            }
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(this, "Seleccione en la Tabla");
+        } catch (NumberFormatException nf) {
+            JOptionPane.showMessageDialog(this, "Llene Los campos Correctos");
+            ContenidoTabla();
         }
-        
+
     }//GEN-LAST:event_jbModificarActionPerformed
 
 
@@ -386,38 +384,37 @@ public class GestionProductos extends javax.swing.JInternalFrame {
     private javax.swing.JTable jtTablaProductos;
     // End of variables declaration//GEN-END:variables
 
-public void Cabecera1(){
-modelo.addColumn("ID");
-modelo.addColumn("TIPO");
-modelo.addColumn("DESCRIPCION");
-modelo.addColumn("PRECIO");
-modelo.addColumn("STOCK");
-modelo.addColumn("ESTADO");
+    public void Cabecera1() {
+        modelo.addColumn("ID");
+        modelo.addColumn("TIPO");
+        modelo.addColumn("DESCRIPCION");
+        modelo.addColumn("PRECIO");
+        modelo.addColumn("STOCK");
+        modelo.addColumn("ESTADO");
 
-jtTablaProductos.setModel(modelo);
-}
-
-public void ContenidoTabla(){
-   modelo.setRowCount(0);
-    for(Producto productos2 : PD.listaProducto4(jcbTipos2.getSelectedItem().toString())){
-    modelo.addRow(new Object[]{productos2.getIdProducto(),
-                               productos2.getNombre(),
-                               productos2.getDescripcion(),
-                               productos2.getPrecio(),
-                               productos2.getStock(),
-                               productos2.isEstado()});
-    
+        jtTablaProductos.setModel(modelo);
     }
 
+    public void ContenidoTabla() {
+        modelo.setRowCount(0);
+        for (Producto productos2 : PD.listaProducto4(jcbTipos2.getSelectedItem().toString())) {
+            modelo.addRow(new Object[]{productos2.getIdProducto(),
+                productos2.getNombre(),
+                productos2.getDescripcion(),
+                productos2.getPrecio(),
+                productos2.getStock(),
+                productos2.isEstado()});
+
+        }
+
+    }
+
+    public void LimpiarCampos() {
+
+        jcbTipos.setSelectedItem(null);
+        jtDescripcion.setText("");
+        jtPrecio.setText("");
+        jtStock.setText("");
+
+    }
 }
-public void LimpiarCampos(){
-
-jcbTipos.setSelectedItem(null);
-jtDescripcion.setText("");
-jtPrecio.setText("");
-jtStock.setText("");
-
-}
-}
-
-
