@@ -778,6 +778,9 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
 
     private void jBCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCobrarActionPerformed
         if (jTablePedidos.getSelectedRow() >= 0) {
+             int idPedido = (int) modelo.getValueAt(jTablePedidos.getSelectedRow(), 0);
+            double total = peData.sumarSubtotales(idPedido);
+            if(total>0){
             jTabbedPane1.setSelectedIndex(2);
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
             LocalDate fechaticket = LocalDate.now();
@@ -787,13 +790,11 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
             jLHora.setText(hora.format(formatoHora));
             int nro = (int) (Math.random() * (999999 - 100000 + 1) + 100000);
             jLabelNro.setText(nro + "");
-            modelo3.setRowCount(0);
-            int idPedido = (int) modelo.getValueAt(jTablePedidos.getSelectedRow(), 0);
+            modelo3.setRowCount(0);            
             for (PedidoProducto pp : ppData.listarProductosPorPedido(idPedido)) {
                 modelo3.addRow(new Object[]{pp.getCantidad(), pp.getProducto(), pp.getProducto().getPrecio(),
                     ppData.calcularSubtotal(pp.getIdPedidoProd())});
-            }
-            double total = peData.sumarSubtotales(idPedido);
+            }            
             jLabelTotal.setText("$ " + total);
             String mesero = modelo.getValueAt(jTablePedidos.getSelectedRow(), 2).toString();
             jLMesero.setText(mesero);
@@ -805,7 +806,9 @@ public class GestionPedidos extends javax.swing.JInternalFrame {
             modelo2.setRowCount(0);
             jComboBoxMesas.removeAllItems();
             cargarComboMesas();
-
+            }else{
+               JOptionPane.showMessageDialog(this, "Pedido vacío, no se puede facturar"); 
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Seleccione el pedido a cobrar");
 
